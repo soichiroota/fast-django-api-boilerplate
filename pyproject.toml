@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "fast-django-api-boilerplate"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "~3.9"
+django = "^4.2"
+fastapi = "^0.100.0"
+pydantic = "^2.0.3"
+uvicorn = {extras = ["standard"], version = "^0.23.0"}
+gunicorn = "^20.1.0"
+uvloop = {version = "^0.17.0", markers = 'sys_platform != "win32"'}
+psycopg2 = "^2.9.5"
+whitenoise = "^6.2.0"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.910"
+black = "^21.9b0"
+flake8 = "^4.0.1"
+isort = "^5.9.3"
+pytest = "^6.2.5"
+pytest-cov = "^3.0.0"
+pytest-sugar = "^0.9.4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 119
+
+[tool.isort]
+profile = "black"
+line_length = 119

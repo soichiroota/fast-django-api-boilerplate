@@ -1,0 +1,22 @@
+version: "3"
+services:
+  db:
+    image: postgres:12
+    ports:
+      - "5432:5432"
+    env_file:
+      - envs/db.local.env
+  app:
+    build: .
+    volumes:
+      - .:/src
+    ports:
+      - 8000:8000 # ホストマシンのポート8000を、docker内のポート8000に接続する
+    command: > # uvicornのサーバーを立ち上げる
+      poetry run
+      uvicorn config.asgi:fastapp
+      --host 0.0.0.0 --reload
+    depends_on:
+      - db
+    env_file:
+      - envs/app.local.env
